@@ -1,0 +1,18 @@
+
+server {
+    listen 80;
+    server_name server_domain_or_IP;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/nelson_mandela_99_99/dastan_shop;
+    }
+    location /media/ {
+        root /home/nelson_mandela_99_99/dastan_shop;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/nelson_mandela_99_99/dastan_shop/myproject.sock;
+    }
+}
